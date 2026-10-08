@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="termHeader" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d3748" />
+      <stop offset="100%" stop-color="#1a202c" />
+    </linearGradient>
+    <filter id="winShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="950" height="700" rx="14" fill="#0f172a"/>
+
+  <g filter="url(#winShadow)">
+    <rect x="25" y="25" width="900" height="650" rx="10" fill="#0d1117" stroke="#30363d" stroke-width="1.2"/>
+    <rect x="25" y="25" width="900" height="38" rx="10" fill="url(#termHeader)"/>
+    
+    <circle cx="48" cy="44" r="6" fill="#ff5f56" stroke="#e0443e" stroke-width="0.5"/>
+    <circle cx="68" cy="44" r="6" fill="#ffbd2e" stroke="#dea123" stroke-width="0.5"/>
+    <circle cx="88" cy="44" r="6" fill="#27c93f" stroke="#1aab29" stroke-width="0.5"/>
+
+    <text x="475" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', monospace" font-size="12" font-weight="600" fill="#c9d1d9" text-anchor="middle">admin@cloud-vps: ~ • UFW Multi-port &amp; Database Isolation Status</text>
+
+    <g font-family="'Fira Code', 'JetBrains Mono', Consolas, monospace" font-size="11.5">
+      <!-- Setup Command -->
+      <text x="45" y="88" fill="#58a6ff" font-weight="600">admin@cloud-vps:~$</text>
+      <text x="200" y="88" fill="#f0f6fc">sudo ufw default deny incoming &amp;&amp; sudo ufw default allow outgoing</text>
+      <text x="45" y="106" fill="#8b949e">Default incoming policy changed to 'deny'</text>
+      <text x="45" y="122" fill="#8b949e">Default outgoing policy changed to 'allow'</text>
+
+      <!-- Allow rules -->
+      <text x="45" y="146" fill="#58a6ff" font-weight="600">admin@cloud-vps:~$</text>
+      <text x="200" y="146" fill="#f0f6fc">sudo ufw allow 22/tcp &amp;&amp; sudo ufw allow 80/tcp &amp;&amp; sudo ufw allow 8082/tcp</text>
+      <text x="45" y="164" fill="#3fb950">Rules updated (v4 &amp; v6)</text>
+
+      <!-- Status Verbose -->
+      <text x="45" y="192" fill="#58a6ff" font-weight="600">admin@cloud-vps:~$</text>
+      <text x="200" y="192" fill="#f0f6fc">sudo ufw status verbose</text>
+      <text x="45" y="212" fill="#f0f6fc">Status: <tspan fill="#3fb950" font-weight="700">active</tspan></text>
+      <text x="45" y="228" fill="#8b949e">Logging: on (low)</text>
+      <text x="45" y="244" fill="#8b949e">Default: <tspan fill="#f85149">deny (incoming)</tspan>, <tspan fill="#3fb950">allow (outgoing)</tspan>, disabled (routed)</text>
+      <text x="45" y="260" fill="#8b949e">New profiles: skip</text>
+
+      <text x="45" y="284" fill="#8b949e" font-weight="600">To                         Action      From</text>
+      <text x="45" y="298" fill="#30363d">----------------------------------------------------</text>
+      
+      <text x="45" y="314" fill="#79c0ff">22/tcp</text>
+      <text x="260" y="314" fill="#3fb950" font-weight="700">ALLOW IN</text>
+      <text x="360" y="314" fill="#f0f6fc">Anywhere</text>
+
+      <text x="45" y="330" fill="#79c0ff">80/tcp</text>
+      <text x="260" y="330" fill="#3fb950" font-weight="700">ALLOW IN</text>
+      <text x="360" y="330" fill="#f0f6fc">Anywhere</text>
+
+      <text x="45" y="346" fill="#79c0ff">8082/tcp</text>
+      <text x="260" y="346" fill="#3fb950" font-weight="700">ALLOW IN</text>
+      <text x="360" y="346" fill="#f0f6fc">Anywhere</text>
+
+      <text x="45" y="362" fill="#79c0ff">22/tcp (v6)</text>
+      <text x="260" y="362" fill="#3fb950" font-weight="700">ALLOW IN</text>
+      <text x="360" y="362" fill="#f0f6fc">Anywhere (v6)</text>
+
+      <text x="45" y="378" fill="#79c0ff">80/tcp (v6)</text>
+      <text x="260" y="378" fill="#3fb950" font-weight="700">ALLOW IN</text>
+      <text x="360" y="378" fill="#f0f6fc">Anywhere (v6)</text>
+
+      <text x="45" y="394" fill="#79c0ff">8082/tcp (v6)</text>
+      <text x="260" y="394" fill="#3fb950" font-weight="700">ALLOW IN</text>
+      <text x="360" y="394" fill="#f0f6fc">Anywhere (v6)</text>
+
+      <!-- Port 3306 Verification Note -->
+      <text x="45" y="420" fill="#e3b341">[LƯU Ý: Cổng 3306 (MySQL) KHÔNG có trong bảng rules -&gt; Bị chặn mặc định]</text>
+
+      <!-- ss -tlnp Command -->
+      <text x="45" y="448" fill="#58a6ff" font-weight="600">admin@cloud-vps:~$</text>
+      <text x="200" y="448" fill="#f0f6fc">ss -tlnp</text>
+      <text x="45" y="468" fill="#8b949e">State    Recv-Q   Send-Q   Local Address:Port    Peer Address:Port   Process</text>
+      <text x="45" y="484" fill="#3fb950">LISTEN   0        128            0.0.0.0:22           0.0.0.0:*       users:(("sshd",pid=842,fd=3))</text>
+      <text x="45" y="500" fill="#3fb950">LISTEN   0        511            0.0.0.0:80           0.0.0.0:*       users:(("nginx",pid=1105,fd=6))</text>
+      <text x="45" y="516" fill="#3fb950">LISTEN   0        100            0.0.0.0:8082         0.0.0.0:*       users:(("java",pid=1840,fd=22))</text>
+      <text x="45" y="532" fill="#fbbf24">LISTEN   0        70           127.0.0.1:3306         0.0.0.0:*       users:(("mysqld",pid=920,fd=14))</text>
+
+      <!-- Verification Section -->
+      <text x="45" y="562" fill="#58a6ff" font-weight="600">admin@cloud-vps:~$</text>
+      <text x="200" y="562" fill="#f0f6fc">nc -zv 127.0.0.1 80 &amp;&amp; nc -zv 127.0.0.1 8082</text>
+      <text x="45" y="580" fill="#a5d6ff">Connection to 127.0.0.1 80 port [tcp/http] succeeded!</text>
+      <text x="45" y="596" fill="#a5d6ff">Connection to 127.0.0.1 8082 port [tcp/*] succeeded!</text>
+
+      <text x="45" y="622" fill="#8b949e">&gt;&gt;&gt; Thử nghiệm quét từ bên ngoài Internet tới cổng MySQL 3306 &lt;&lt;&lt;</text>
+      <text x="45" y="640" fill="#f85149">nmap -p 3306 -Pn 203.0.113.50 --&gt; 3306/tcp filtered (no response - dropped by UFW)</text>
+      <text x="45" y="658" fill="#3fb950">[Xác nhận: Cổng 3306 đã được cô lập tuyệt đối khỏi nguy cơ tấn công Internet]</text>
+    </g>
+  </g>
+</svg>

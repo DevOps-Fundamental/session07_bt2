@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="wanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <linearGradient id="ufwGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="allowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="denyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#b91c1c" />
+    </linearGradient>
+    <linearGradient id="hostGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="950" height="600" fill="url(#bgGrad)" rx="16"/>
+
+  <rect x="25" y="20" width="900" height="60" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="475" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="700" fill="#f8fafc" text-anchor="middle">KIẾN TRÚC TƯỜNG LỬA UFW CHO CỤM DỊCH VỤ MULTI-PORT</text>
+  <text x="475" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Multi-port Protection • SSH (22) • Nginx (80) • Spring Boot (8082) • Isolated MySQL (3306)</text>
+
+  <!-- Left Column: Internet Traffic -->
+  <g transform="translate(40, 105)">
+    <rect width="200" height="370" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect width="200" height="42" rx="12" fill="url(#wanGrad)"/>
+    <text x="100" y="27" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">LƯU LƯỢNG INTERNET</text>
+
+    <g transform="translate(15, 55)">
+      <rect width="170" height="60" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="85" y="24" font-family="sans-serif" font-size="12" font-weight="600" fill="#60a5fa" text-anchor="middle">DevOps / SysAdmin</text>
+      <text x="85" y="44" font-family="monospace" font-size="11" fill="#93c5fd" text-anchor="middle">Port 22/tcp (SSH)</text>
+    </g>
+
+    <g transform="translate(15, 125)">
+      <rect width="170" height="60" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="85" y="24" font-family="sans-serif" font-size="12" font-weight="600" fill="#34d399" text-anchor="middle">Khách truy cập Web</text>
+      <text x="85" y="44" font-family="monospace" font-size="11" fill="#a7f3d0" text-anchor="middle">Port 80/tcp (HTTP)</text>
+    </g>
+
+    <g transform="translate(15, 195)">
+      <rect width="170" height="60" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="85" y="24" font-family="sans-serif" font-size="12" font-weight="600" fill="#fbbf24" text-anchor="middle">QA / Dev Test API</text>
+      <text x="85" y="44" font-family="monospace" font-size="11" fill="#fde68a" text-anchor="middle">Port 8082/tcp (App)</text>
+    </g>
+
+    <g transform="translate(15, 265)">
+      <rect width="170" height="60" rx="8" fill="#450a0a" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,3"/>
+      <text x="85" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#f87171" text-anchor="middle">Kẻ tấn công / Scanner</text>
+      <text x="85" y="44" font-family="monospace" font-size="11" fill="#fca5a5" text-anchor="middle">Port 3306/tcp (DB)</text>
+    </g>
+
+    <g transform="translate(15, 335)">
+      <text x="85" y="20" font-family="sans-serif" font-size="10.5" fill="#94a3b8" text-anchor="middle">Tất cả cổng khác: CHẶN</text>
+    </g>
+  </g>
+
+  <!-- Middle Column: UFW Firewall Filtering -->
+  <g transform="translate(270, 105)">
+    <rect width="360" height="370" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="1.8" filter="url(#shadow)"/>
+    <rect width="360" height="42" rx="12" fill="url(#ufwGrad)"/>
+    <text x="180" y="27" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">UFW FIREWALL / NETFILTER RULES</text>
+
+    <g transform="translate(15, 52)">
+      <rect width="330" height="30" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+      <text x="165" y="20" font-family="monospace" font-size="10.5" fill="#fbbf24" text-anchor="middle">Default: deny (incoming), allow (outgoing)</text>
+    </g>
+
+    <!-- Rule 1: 22 -->
+    <g transform="translate(15, 90)">
+      <rect width="330" height="52" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.2"/>
+      <circle cx="22" cy="26" r="9" fill="url(#allowGrad)"/>
+      <path d="M18 26 L21 29 L26 23" stroke="#ffffff" stroke-width="1.8" fill="none"/>
+      <text x="40" y="23" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ecfdf5">Quy tắc 1: 22/tcp ALLOW IN (SSH)</text>
+      <text x="40" y="40" font-family="monospace" font-size="10.5" fill="#6ee7b7">ufw allow 22/tcp • Anywhere (v4 &amp; v6)</text>
+    </g>
+
+    <!-- Rule 2: 80 -->
+    <g transform="translate(15, 150)">
+      <rect width="330" height="52" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.2"/>
+      <circle cx="22" cy="26" r="9" fill="url(#allowGrad)"/>
+      <path d="M18 26 L21 29 L26 23" stroke="#ffffff" stroke-width="1.8" fill="none"/>
+      <text x="40" y="23" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ecfdf5">Quy tắc 2: 80/tcp ALLOW IN (Nginx Web)</text>
+      <text x="40" y="40" font-family="monospace" font-size="10.5" fill="#6ee7b7">ufw allow 80/tcp • Anywhere (v4 &amp; v6)</text>
+    </g>
+
+    <!-- Rule 3: 8082 -->
+    <g transform="translate(15, 210)">
+      <rect width="330" height="52" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.2"/>
+      <circle cx="22" cy="26" r="9" fill="url(#allowGrad)"/>
+      <path d="M18 26 L21 29 L26 23" stroke="#ffffff" stroke-width="1.8" fill="none"/>
+      <text x="40" y="23" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#ecfdf5">Quy tắc 3: 8082/tcp ALLOW IN (Spring Boot)</text>
+      <text x="40" y="40" font-family="monospace" font-size="10.5" fill="#6ee7b7">ufw allow 8082/tcp • Anywhere (v4 &amp; v6)</text>
+    </g>
+
+    <!-- Blocked: 3306 -->
+    <g transform="translate(15, 270)">
+      <rect width="330" height="54" rx="8" fill="#450a0a" stroke="#ef4444" stroke-width="1.2"/>
+      <circle cx="22" cy="27" r="9" fill="url(#denyGrad)"/>
+      <path d="M18 23 L26 31 M26 23 L18 31" stroke="#ffffff" stroke-width="1.8" fill="none"/>
+      <text x="40" y="24" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#fef2f2">Cô lập CSDL: 3306/tcp BỊ CHẶN (DROP)</text>
+      <text x="40" y="42" font-family="monospace" font-size="10.5" fill="#fca5a5">Không có luật allow • Chặn mặc định từ WAN</text>
+    </g>
+
+    <g transform="translate(15, 332)">
+      <rect width="330" height="26" rx="6" fill="#1e3a8a" stroke="#3b82f6" stroke-width="1"/>
+      <text x="165" y="17" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#93c5fd" text-anchor="middle">Lưu lượng ra (Outgoing): MỞ TOÀN BỘ (ALLOW)</text>
+    </g>
+  </g>
+
+  <!-- Right Column: Host Linux Services -->
+  <g transform="translate(660, 105)">
+    <rect width="250" height="370" rx="12" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" filter="url(#shadow)"/>
+    <rect width="250" height="42" rx="12" fill="url(#hostGrad)"/>
+    <text x="125" y="27" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">DỊCH VỤ TRÊN MÁY CHỦ</text>
+
+    <!-- Service 1: SSH -->
+    <g transform="translate(15, 52)">
+      <rect width="220" height="52" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+      <text x="110" y="20" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#34d399" text-anchor="middle">OpenSSH Server</text>
+      <text x="110" y="38" font-family="monospace" font-size="10.5" fill="#cbd5e1" text-anchor="middle">0.0.0.0:22 (sshd)</text>
+    </g>
+
+    <!-- Service 2: Nginx -->
+    <g transform="translate(15, 112)">
+      <rect width="220" height="52" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+      <text x="110" y="20" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#34d399" text-anchor="middle">Nginx Web Server</text>
+      <text x="110" y="38" font-family="monospace" font-size="10.5" fill="#cbd5e1" text-anchor="middle">0.0.0.0:80 (nginx: master)</text>
+    </g>
+
+    <!-- Service 3: Spring Boot -->
+    <g transform="translate(15, 172)">
+      <rect width="220" height="52" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1"/>
+      <text x="110" y="20" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#34d399" text-anchor="middle">Spring Boot API</text>
+      <text x="110" y="38" font-family="monospace" font-size="10.5" fill="#cbd5e1" text-anchor="middle">0.0.0.0:8082 (java / app)</text>
+    </g>
+
+    <!-- Service 4: MySQL Isolated -->
+    <g transform="translate(15, 232)">
+      <rect width="220" height="74" rx="8" fill="#0f172a" stroke="#f59e0b" stroke-width="1.2"/>
+      <text x="110" y="20" font-family="sans-serif" font-size="11.5" font-weight="700" fill="#fbbf24" text-anchor="middle">MySQL Database</text>
+      <text x="110" y="38" font-family="monospace" font-size="10.5" fill="#cbd5e1" text-anchor="middle">127.0.0.1:3306 (mysqld)</text>
+      <text x="110" y="55" font-family="sans-serif" font-size="10" fill="#34d399" text-anchor="middle">Chỉ Spring Boot nối qua localhost</text>
+      <text x="110" y="68" font-family="sans-serif" font-size="9.5" fill="#fca5a5" text-anchor="middle">Hoàn toàn cô lập khỏi Internet</text>
+    </g>
+
+    <g transform="translate(15, 315)">
+      <rect width="220" height="42" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="110" y="18" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#38bdf8" text-anchor="middle">Chẩn đoán hệ thống</text>
+      <text x="110" y="33" font-family="monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">ss -tlnp • ufw status verbose</text>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 240 160 L 270 190" stroke="#10b981" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  <path d="M 240 230 L 270 250" stroke="#10b981" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  <path d="M 240 300 L 270 310" stroke="#10b981" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  <path d="M 240 370 L 270 380" stroke="#ef4444" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+
+  <path d="M 630 190 L 660 160" stroke="#10b981" stroke-width="2" fill="none"/>
+  <path d="M 630 250 L 660 220" stroke="#10b981" stroke-width="2" fill="none"/>
+  <path d="M 630 310 L 660 280" stroke="#10b981" stroke-width="2" fill="none"/>
+
+  <!-- Footer Banner -->
+  <rect x="40" y="495" width="870" height="85" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.2"/>
+  <text x="60" y="520" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">NGUYÊN TẮC BẢO MẬT HỆ THỐNG MULTI-PORT (DEFENSE-IN-DEPTH):</text>
+  <text x="60" y="542" font-family="sans-serif" font-size="11.5" fill="#cbd5e1">• Chỉ mở đúng 3 cổng công khai: 22 (SSH quản trị), 80 (Web HTTP), và 8082 (Spring Boot kiểm thử).</text>
+  <text x="60" y="562" font-family="sans-serif" font-size="11.5" fill="#cbd5e1">• Cổng cơ sở dữ liệu 3306 bắt buộc phải cô lập ở tầng mạng (UFW Default Deny) và bind cục bộ 127.0.0.1 để ngăn ngừa rò rỉ dữ liệu.</text>
+</svg>
